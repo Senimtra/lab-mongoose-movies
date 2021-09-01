@@ -3,12 +3,12 @@
 ## Iteration 8: Listing Our Movies ##
 ##################################### }}
 
-<h2>List of Movies</h2>
+<h3>List of Movies</h3>
 
 <ul>
    {{#each movieList}}
-      <li><a href='movies/{{_id}}'>{{title}}</a><form action='/movies/{{_id}}/delete' method='POST'><button>Delete Movie</button></form><a href='/movies/{{_id}}/edit'><button>Update Movie</button></a></li>
+      <li><a class='field' href='movies/{{_id}}'>{{title}}</a><form action='/movies/{{_id}}/delete' method='POST'><button class='btn btn-sm btn-secondary me-1'>Delete</button></form><a href='/movies/{{_id}}/edit'><button class='btn btn-sm btn-secondary'>Update</button></a></li>
    {{/each}}
 </ul>
 
-<a href='/movies/create'>Create Movie</a>
+<a href='/movies/create'><button class='btn btn-dark mt-3'>Create Movie</button></a>

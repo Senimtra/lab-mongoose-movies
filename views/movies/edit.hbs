@@ -3,7 +3,7 @@
 ## Iteration 12 (Bonus): Editing Movies ##
 ########################################## }}
 
-<h2>Update Movie</h2>
+<h3>Update Movie</h3>
 
 <form action='/movies/{{_id}}' method='POST'>
    <label for='create-title'>Title:</label>
@@ -12,5 +12,5 @@
    <input id='create-genre' type='text' name='genre' maxlength='20' value='{{genre}}' /><br />
    <label for='create-plot'>Plot:</label>
    <input id='create-plot' type='text' name='plot' maxlength='100' value='{{plot}}' /><br />
-   <button>Update Movie</button>
+   <button class='btn btn-secondary mt-3'>Update Movie</button>
 </form>
