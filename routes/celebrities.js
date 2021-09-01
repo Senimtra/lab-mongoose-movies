@@ -22,5 +22,17 @@ celebrityRouter.get('/', (req, res, next) => {
       });
 });
 
+// ### Route handler celebrity details ###
+celebrityRouter.get('/:id', (req, res, next) => {
+   const celebrityId = req.params.id;
+   Celebrity.findById(celebrityId)
+      .then(celebrityDetails => {
+         res.render('celebrities/show', celebrityDetails);
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // ### Export celebrity router
 module.exports = celebrityRouter;
