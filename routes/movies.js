@@ -49,5 +49,21 @@ movieRouter.get('/:id', (req, res, next) => {
       });
 });
 
+// ###################################
+// ## Iteration 11: Deleting Movies ##
+// ###################################
+
+// ### Route handler movie delete ###
+movieRouter.post('/:id/delete', (req, res, next) => {
+   const deleteId = req.params.id;
+   Movie.findByIdAndRemove(deleteId)
+      .then(() => {
+         res.redirect('/movies');
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // ### Export movie router ###
 module.exports = movieRouter;
