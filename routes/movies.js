@@ -7,6 +7,25 @@ const Movie = require('./../models/movie');
 // ### Create movie router ###
 const movieRouter = express.Router();
 
+// ### Route handler create movie form ###
+movieRouter.get('/create', (req, res) => {
+   res.render('movies/create');
+});
+
+// ### Route handler create movie submit ###
+movieRouter.post('/', (req, res) => {
+   const { title, genre, plot } = req.body;
+   const newMovie = new Movie({ title, genre, plot });
+   newMovie
+      .save()
+      .then(() => {
+         res.redirect('/movies');
+      })
+      .catch(error => {
+         res.render('movies/create');
+      });
+});
+
 // ### Route handler all movies ###
 movieRouter.get('/', (req, res, next) => {
    Movie.find()
