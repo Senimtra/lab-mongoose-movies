@@ -53,6 +53,31 @@ celebrityRouter.get('/:id', (req, res, next) => {
       });
 });
 
+// ### Route handler celebrity update form ###
+celebrityRouter.get('/:id/edit', (req, res, next) => {
+   const editId = req.params.id;
+   Celebrity.findById(editId)
+      .then(editCelebrity => {
+         res.render('celebrities/edit', editCelebrity);
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
+// ### Route handler celebrity update submit ###
+celebrityRouter.post('/:id', (req, res, next) => {
+   const updateId = req.params.id;
+   const { name, occupation, catchPhrase } = req.body;
+   Celebrity.findByIdAndUpdate(updateId, { name, occupation, catchPhrase })
+      .then(() => {
+         res.redirect('/celebrities');
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // #######################################
 // ## Iteration 5: Deleting Celebrities ##
 // #######################################
