@@ -53,5 +53,21 @@ celebrityRouter.get('/:id', (req, res, next) => {
       });
 });
 
+// #######################################
+// ## Iteration 5: Deleting Celebrities ##
+// #######################################
+
+// ### Route handler celebrity delete ###
+celebrityRouter.post('/:id/delete', (req, res, next) => {
+   const deleteId = req.params.id;
+   Celebrity.findByIdAndRemove(deleteId)
+      .then(() => {
+         res.redirect('/celebrities');
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // ### Export celebrity router
 module.exports = celebrityRouter;
