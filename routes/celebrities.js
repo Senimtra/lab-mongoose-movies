@@ -94,5 +94,5 @@ celebrityRouter.post('/:id/delete', (req, res, next) => {
       });
 });
 
-// ### Export celebrity router
+// ### Export celebrity router ###
 module.exports = celebrityRouter;

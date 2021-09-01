@@ -1,0 +1,12 @@
+{{!
+#####################################
+## Iteration 8: Listing Our Movies ##
+##################################### }}
+
+<h2>List of Movies</h2>
+
+<ul>
+   {{#each movieList}}
+      <li><a href='movies/{{_id}}'>{{title}}</a></li>
+   {{/each}}
+</ul>
