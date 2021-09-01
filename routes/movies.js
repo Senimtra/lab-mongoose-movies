@@ -18,5 +18,17 @@ movieRouter.get('/', (req, res, next) => {
       });
 });
 
+// ### Route handler movie details ###
+movieRouter.get('/:id', (req, res, next) => {
+   const movieId = req.params.id;
+   Movie.findById(movieId)
+      .then(movieDetails => {
+         res.render('movies/show', movieDetails);
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // ### Export movie router ###
 module.exports = movieRouter;
