@@ -49,6 +49,31 @@ movieRouter.get('/:id', (req, res, next) => {
       });
 });
 
+// ### Route handler movie update form ###
+movieRouter.get('/:id/edit', (req, res, next) => {
+   const editId = req.params.id;
+   Movie.findById(editId)
+      .then(editMovie => {
+         res.render('movies/edit', editMovie);
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
+// ### Route handler movie update submit ###
+movieRouter.post('/:id', (req, res, next) => {
+   const updateId = req.params.id;
+   const { title, genre, plot } = req.body;
+   Movie.findByIdAndUpdate(updateId, { title, genre, plot })
+      .then(() => {
+         res.redirect('/movies');
+      })
+      .catch(error => {
+         next(error);
+      });
+});
+
 // ###################################
 // ## Iteration 11: Deleting Movies ##
 // ###################################
